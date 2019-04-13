@@ -1,4 +1,196 @@
-<html lang="zh-CN en">
-<head>
-Hello, my website
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head title="Pp's Web">
+    <meta charset="utf-8">
+    <!--<link rel="stylesheet" href="./bootstrap.css">-->
+    <!--<link rel="stylesheet" href="./bootstrap-theme.css">-->
+    <script src="./jquery-3.3.1.min.js"></script>
+    <!--<script src="./jquery-ui.min.js"></script>-->
+    <script src=""></script>
+    <!--<script src="./bootstrap.js"></script>-->
+    <!--<script src="./index.js"></script>-->
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .navigation {
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            width: auto;
+            height: 60px;
+        }
+        .title {
+            list-style-type: none;
+            background-color: lightcoral;
+            margin: 0;
+            padding: 0;
+            width: auto;
+            height: 50px;
+            text-align: center;
+
+        }
+        .title>li {
+            display: inline;
+            float: left;
+            background-color: lightcoral;
+            margin: 0;
+            padding: 0;
+            height: 50px;
+            min-width: 140px;
+            line-height: 50px;
+            text-align: center;
+            position: relative;
+            z-index: 999;
+
+        }
+        .title>li>a {
+            color: white;
+            font-size: 16px;
+            font-family: "Microsoft Yahei", Arial, "宋体", sans-serif;
+            font-weight: lighter;
+            text-decoration: none;
+            /*text-shadow:1px 1px lightgrey;*/
+        }
+        .title>li:hover>.first-drop {
+            display: block;
+            margin: 0;
+            padding: 0;
+            /*position: relative;*/
+            list-style-type: none;
+            line-height: 30px;
+
+        }
+        .title>li>.first-drop>li {
+            display: block;
+            background-color: lightcoral;
+            width: 140px;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .title>li>.first-drop>li>a {
+            color: white;
+            font-size: 12px;
+            font-family: "Microsoft Yahei", Arial, "宋体", sans-serif;
+            text-decoration: none;
+
+        }
+        .title>li:hover, .title>li>.first-drop>li:hover {
+            background-color: #eb7979;
+        }
+        .title>li>.first-drop>li>a:hover {
+            color: gold;
+        }
+        div.content {
+            margin: 20px;
+            padding: 20px;
+            width: auto;
+            height: auto;
+            border-color: rgba(211, 211, 211, 0.6);
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+
+    </style>
+    <script>
+        function loadXMLDoc(path)
+        {
+            var xmlhttp;
+            if (window.XMLHttpRequest)
+            {
+                //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                xmlhttp = new XMLHttpRequest();
+            }
+            else
+            {
+                // IE6, IE5 浏览器执行代码
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function()
+            {
+                if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
+                {
+                    console.log("200 200 200 ");
+                    $("#here").html(xmlhttp.responseText);
+
+                }
+            };
+            // var path = "./Pp's-web/english-articles/MIT/20190409-1.html";
+            console.log("123321");
+            xmlhttp.open("GET", path, true);
+            xmlhttp.send();
+        }
+        function recover() {
+            $("#here").text("以下是段落部分");
+        }
+    </script>
+    <title></title>
 </head>
+
+<body>
+<div class="navigation">
+    <ul class="title">
+        <li>
+            <a href="">英文资讯</a>
+            <ul hidden class="first-drop">
+                <li><a onclick="loadXMLDoc('./Pp\'s-web/english-articles/mit/list.html')" href="#">MIT TechReview</a></li>
+                <li><a onclick="loadXMLDoc('./Pp\'s-web/english-articles/google_news/list.html')" href="#">Google News</a></li>
+                <li><a onclick="loadXMLDoc('./Pp\'s-web/english-articles/the-economist/list.html')" href="#">The Echonomist</a></li>
+                <li><a onclick="loadXMLDoc('./Pp\'s-web/english-articles/scmp/list.html')" href="#">SCMP</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="">我的研究项目</a>
+            <ul hidden class="first-drop">
+                <li><a href="">有机图像探测阵列 OPD</a></li>
+                <li><a href="">柔性薄膜封装 flex-TFE</a></li>
+                <li><a href="">溶液法氧化物薄膜晶体管 SP Oxide-TFT</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="">计算机项目</a>
+            <ul hidden class="first-drop">
+                <li>
+                    <a href="">爬 虫</a>
+                    <ul hidden class="second-drop">
+                        <li><a href="">Bilibili</a></li>
+                        <li><a href="">Weibo</a></li>
+                        <li><a href="">Twitter</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Web相关</a></li>
+                <li><a href="">算 法</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="">DIY项目</a>
+            <ul hidden class="first-drop">
+                <li><a href="">ITX主机</a></li>
+                <li><a href="">射箭</a></li>
+                <li><a href="">皮具</a></li>
+            </ul>
+        </li>
+        <li><a href="">如何建立我的Blog</a></li>
+        <li><a href="">关于</a></li>
+    </ul>
+</div>
+<div class="content">
+    <button type="button" onclick="loadXMLDoc()">修改内容</button>
+    <button type="button" onclick="recover()">复原内容</button>
+    <p id="here">以下是段落部分</p>
+
+
+
+</div>
+<script>
+
+</script>
+</body>
+
+</html>
